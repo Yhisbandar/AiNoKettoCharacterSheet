@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ai no Ketto - Hoja Estudiantil Interactiva</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Fredoka:wght@600;700&family=Mali:wght@500;600;700&display=swap');
+
+  * { 
+    box-sizing: border-box; 
+    font-family: 'Mali', cursive; 
+    margin: 0; 
+    padding: 0; 
+  }
+  
+  body { 
+    background-color: #fde8ed; 
+    background-image: radial-gradient(#ffb6c1 1.5px, transparent 1.5px);
+    background-size: 20px 20px;
+    padding: 20px; 
+    color: #5a3e47; 
+  }
+
+  /* Barra de herramientas fija para interactividad */
+  .toolbar {
+    max-width: 880px;
+    margin: 0 auto 15px auto;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .btn {
+    background: #ff5c8a;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 8px 16px;
+    font-family: 'Fredoka', cursive;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(255, 92, 138, 0.3);
+    transition: transform 0.1s, background-color 0.2s;
+  }
+
+  .btn:hover {
+    background: #d6336c;
+    transform: translateY(-2px);
+  }
+
+  .btn-danger {
+    background: #7a5260;
+  }
+
+  .btn-danger:hover {
+    background: #5a3e47;
+  }
+
+  /* Contenedor principal estilo carta dulce */
+  .sheet { 
+    max-width: 880px; 
+    margin: 0 auto; 
+    background: #ffffff; 
+    border: 4px solid #ff7b9c; 
+    border-radius: 24px; 
+    padding: 22px; 
+    box-shadow: 0 10px 25px rgba(255, 123, 156, 0.25);
+    position: relative;
+  }
+
+  /* Encabezado */
+  .header-box {
+    background: linear-gradient(135deg, #ff9ebb 0%, #ff5c8a 100%);
+    border-radius: 18px;
+    padding: 12px;
+    color: white;
+    text-align: center;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(255, 92, 138, 0.3);
+  }
+
+  .header-title {
+    font-family: 'Fredoka', cursive;
+    font-size: 28px;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px 0px #d6336c, 4px 4px 0px rgba(0,0,0,0.05);
+  }
+
+  .header-subtitle {
+    font-family: 'Comfortaa', cursive;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    opacity: 0.95;
+    margin-top: 2px;
+  }
+
+  /* Inputs generales */
+  input[type="text"], input[type="number"] {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Mali', cursive;
+    font-weight: 600;
+    color: #5a3e47;
+    width: 100%;
+  }
+
+  /* Quitar flechas de input number */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type=number] { -moz-appearance: textfield; }
+
+  /* Tablas de Datos Personales */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .field-card {
+    background: #fff5f7;
+    border: 2px solid #ffccd5;
+    border-radius: 14px;
+    padding: 6px 10px;
+  }
+
+  .field-label {
+    font-family: 'Comfortaa', cursive;
+    font-size: 11px;
+    font-weight: 700;
+    color: #d6336c;
+    text-shadow: 1px 1px 0px #ffffff;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .field-input {
+    height: 22px;
+    border-bottom: 2px dashed #ffa6b9;
+    font-size: 12px;
+  }
+
+  /* Titulos de Seccion */
+  .section-title {
+    background: #ff5c8a;
+    color: white;
+    font-family: 'Fredoka', cursive;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 6px rgba(255, 92, 138, 0.25);
+    text-shadow: 1px 1px 0px #d6336c;
+  }
+
+  /* Grids de Atributos y Habilidades */
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+
+  /* Bloque Atributos/Habilidades */
+  .attr-card {
+    background: #fff8f9;
+    border: 2px solid #ffccd5;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .attr-header {
+    background: #ffe3e8;
+    color: #c41e3a;
+    font-family: 'Fredoka', cursive;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    padding: 6px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ffccd5;
+  }
+
+  .heart-box {
+    width: 22px;
+    height: 22px;
+    background: #ffffff;
+    border: 2px solid #ff5c8a;
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  .heart-box input {
+    text-align: center;
+    font-family: 'Fredoka', cursive;
+    font-weight: bold;
+    color: #d6336c;
+    font-size: 12px;
+    height: 100%;
+  }
+
+  .skill-list { padding: 6px 8px; }
+
+  .skill-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: #6a4a55;
+    padding: 3px 0;
+    border-bottom: 1px dotted #ffd0d8;
+  }
+  .skill-row:last-child { border-bottom: none; }
+
+  /* Casilla numérica para Habilidades */
+  .skill-slot {
+    width: 22px;
+    height: 20px;
+    background: #fff;
+    border: 2px solid #ffa6b9;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .skill-slot input {
+    text-align: center;
+    font-family: 'Fredoka', cursive;
+    font-weight: bold;
+    color: #d6336c;
+    font-size: 11px;
+    height: 100%;
+  }
+
+  /* Casilla de daño / estrés interactiva */
+  .tracker-slot {
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border: 2px solid #ffa6b9;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s;
+    position: relative;
+  }
+
+  .tracker-slot.active {
+    background: #ff5c8a;
+    border-color: #d6336c;
+  }
+
+  .tracker-slot.active::after {
+    content: "♥";
+    color: white;
+    font-size: 11px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -52%);
+  }
+
+  /* Seccion de Resistencia y Salud */
+  .status-card {
+    background: #fff5f7;
+    border: 2px solid #ffccd5;
+    border-radius: 14px;
+    padding: 8px;
+  }
+
+  .status-header {
+    font-family: 'Fredoka', cursive;
+    font-size: 12px;
+    color: #d6336c;
+    margin-bottom: 2px;
+  }
+
+  .big-tracker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .big-heart {
+    width: 34px;
+    height: 30px;
+    background: #ff7b9c;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(255, 123, 156, 0.4);
+  }
+
+  .big-heart input {
+    color: white;
+    text-align: center;
+    font-family: 'Fredoka', cursive;
+    font-size: 14px;
+    height: 100%;
+  }
+
+  .checkbox-list { margin-top: 4px; display: flex; flex-direction: column; gap: 3px; }
+  .checkbox-item { 
+    font-size: 11px; 
+    font-weight: 700; 
+    color: #7a5260; 
+    display: flex; 
+    align-items: center; 
+    gap: 5px; 
+    cursor: pointer;
+  }
+  
+  .bubble-check { 
+    width: 12px; 
+    height: 12px; 
+    border: 2px solid #ff5c8a; 
+    border-radius: 50%; 
+    background: #fff;
+    transition: background 0.15s;
+  }
+
+  .checkbox-item.active .bubble-check {
+    background: #ff5c8a;
+  }
+
+  /* Tabla de Especialidades */
+  .spec-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 5px;
+    border: 2px solid #ffccd5;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .spec-table th {
+    background: #ffe3e8;
+    color: #d6336c;
+    font-family: 'Comfortaa', cursive;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 6px;
+    text-transform: uppercase;
+  }
+
+  .spec-table td {
+    background: #ffffff;
+    border-top: 1px solid #ffccd5;
+    height: 30px;
+    padding: 2px 6px;
+  }
+
+  .notes-area {
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: vertical;
+    background: repeating-linear-gradient(
+      transparent,
+      transparent 21px,
+      #ffa6b9 21px,
+      #ffa6b9 23px
+    );
+    line-height: 23px;
+    font-family: 'Mali', cursive;
+    font-size: 12px;
+    color: #5a3e47;
+    min-height: 115px;
+  }
+
+  /* Reglas de Impresión / PDF */
+  @media print {
+    body {
+      background: white !important;
+      padding: 0 !important;
+    }
+
+    .no-print {
+      display: none !important;
+    }
+
+    .sheet {
+      box-shadow: none !important;
+      border: 3px solid #ff7b9c !important;
+      max-width: 100% !important;
+      width: 100% !important;
+      padding: 10px !important;
+    }
+
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- BARRA DE ACCIÓN -->
+<div class="toolbar no-print">
+  <button class="btn btn-danger" onclick="clearSheet()">🧹 Reiniciar Hoja</button>
+  <button class="btn" onclick="window.print()">🖨️ Imprimir / Guardar en PDF</button>
+</div>
+
+<div class="sheet">
+  <!-- ENCABEZADO ESTILO OTOME/SHOJO -->
+  <div class="header-box">
+    <div class="header-title">🍓 AI NO KETTO (愛の決闘) 🍓</div>
+    <div class="header-subtitle">HOJA DE PERSONAJE ESTUDIANTIL</div>
+  </div>
+
+  <!-- DATOS PERSONALES -->
+  <div class="info-grid">
+    <div class="field-card">
+      <span class="field-label">🎀 Nombre del Estudiante</span>
+      <input type="text" class="field-input">
+    </div>
+    <div class="field-card">
+      <span class="field-label">👗 Apariencia / Uniforme</span>
+      <input type="text" class="field-input">
+    </div>
+    <div class="field-card">
+      <span class="field-label">💖 Objetivo del Corazón</span>
+      <input type="text" class="field-input">
+    </div>
+    <div class="field-card">
+      <span class="field-label">🧸 Objeto Sentimental (1/sesión)</span>
+      <input type="text" class="field-input">
+    </div>
+  </div>
+
+  <!-- ATRIBUTOS BASE Y HABILIDADES PURAS -->
+  <div class="section-title">✨ Atributos Base & Habilidades Puras</div>
+  <div class="grid-4">
+    <!-- VIGOR -->
+    <div class="attr-card">
+      <div class="attr-header">
+        VIGOR 
+        <div class="heart-box"><input type="number" id="attr-vigor" min="0" max="5"></div>
+      </div>
+      <div class="skill-list">
+        <div class="skill-row"><span>Aguante</span><div class="skill-slot"><input type="number" min="0"></div></div>
+        <div class="skill-row"><span>Bronca</span><div class="skill-slot"><input type="number" min="0"></div></div>
+      </div>
+    </div>
+    <!-- PRESENCIA -->
+    <div class="attr-card">
+      <div class="attr-header">
+        PRESENCIA 
+        <div class="heart-box"><input type="number" id="attr-presencia" min="0" max="5"></div>
+      </div>
+      <div class="skill-list">
+        <div class="skill-row"><span>Glamour</span><div class="skill-slot"><input type="number" min="0"></div></div>
+        <div class="skill-row"><span>Dramatismo</span><div class="skill-slot"><input type="number" min="0"></div></div>
+      </div>
+    </div>
+    <!-- ASTUCIA -->
+    <div class="attr-card">
+      <div class="attr-header">
+        ASTUCIA 
+        <div class="heart-box"><input type="number" id="attr-astucia" min="0" max="5"></div>
+      </div>
+      <div class="skill-list">
+        <div class="skill-row"><span>Intelecto</span><div class="skill-slot"><input type="number" min="0"></div></div>
+        <div class="skill-row"><span>Sigilo / Esc.</span><div class="skill-slot"><input type="number" min="0"></div></div>
+      </div>
+    </div>
+    <!-- ENCANTO -->
+    <div class="attr-card">
+      <div class="attr-header">
+        ENCANTO 
+        <div class="heart-box"><input type="number" id="attr-encanto" min="0" max="5"></div>
+      </div>
+      <div class="skill-list">
+        <div class="skill-row"><span>Empatía</span><div class="skill-slot"><input type="number" min="0"></div></div>
+        <div class="skill-row"><span>Coqueteo</span><div class="skill-slot"><input type="number" min="0"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HABILIDADES MIXTAS -->
+  <div class="section-title">🌸 Habilidades Mixtas</div>
+  <div class="grid-3">
+    <div class="attr-card">
+      <div class="skill-list">
+        <div class="skill-row"><span>Físico <small style="color:#a06070; font-size:10px;">(Vig+Pres)</small></span><div class="skill-slot"><input type="number" min="0"></div></div>
+        <div class="skill-row"><span>Juego de Manos <small style="color:#a06070; font-size:10px;">(Vig+Ast)</small></span><div class="skill-slot"><input type="number" min="0"></div></div>
+      </div>
+    </div>
+    <div class="attr-card">
+      <div class="skill-list">
+        <div class="skill-row"><span>Presión <small style="color:#a06070; font-size:10px;">(Vig+Enc)</small></span><div class="skill-slot"><input type="number" min="0"></div></div>
+        <div class="skill-row"><span>Disimulo <small style="color:#a06070; font-size:10px;">(Pres+Ast)</small></span><div class="skill-slot"><input type="number" min="0"></div></div>
+      </div>
+    </div>
+    <div class="attr-card">
+      <div class="skill-list">
+        <div class="skill-row"><span>Persuasión <small style="color:#a06070; font-size:10px;">(Pres+Enc)</small></span><div class="skill-slot"><input type="number" min="0"></div></div>
+        <div class="skill-row"><span>Perspicacia <small style="color:#a06070; font-size:10px;">(Ast+Enc)</small></span><div class="skill-slot"><input type="number" min="0"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESISTENCIA Y DRAMA -->
+  <div class="section-title">💌 Resistencia, Salud & Reservas de Drama</div>
+  <div class="grid-4">
+    <!-- VITALIDAD -->
+    <div class="status-card">
+      <div class="big-tracker">
+        <div><div class="status-header">VITALIDAD</div><small style="font-size:9px; color:#888;">⌈(Vig+Pres)/2⌉</small></div>
+        <div class="big-heart"><input type="number" id="stat-vitalidad" min="0" max="5"></div>
+      </div>
+      <div style="font-size:10px; font-weight:700; color:#d6336c; margin-top:5px;">Daño Físico:</div>
+      <div style="display:flex; gap:3px; margin-top:2px;">
+        <div class="tracker-slot" onclick="toggleSlot(this)"></div>
+        <div class="tracker-slot" onclick="toggleSlot(this)"></div>
+        <div class="tracker-slot" onclick="toggleSlot(this)"></div>
+        <div class="tracker-slot" onclick="toggleSlot(this)"></div>
+        <div class="tracker-slot" onclick="toggleSlot(this)"></div>
+      </div>
+    </div>
+
+    <!-- COMPOSTURA -->
+    <div class="status-card">
+      <div class="big-tracker">
+        <div><div class="status-header">COMPOSTURA</div><small style="font-size:9px; color:#888;">⌈(Enc+Ast)/2⌉</small></div>
+        <div class="big-heart"><input type="number" id="stat-compostura" min="0" max="5"></div>
+      </div>
+      <div style="font-size:10px; font-weight:700; color:#d6336c; margin-top:5px;">Estrés / Vergüenza:</div>
+      <div style="display:flex; gap:3px; margin-top:2px;">
+        <div class="tracker-slot" onclick="toggleSlot(this)"></div>
+        <div class="tracker-slot" onclick="toggleSlot(this)"></div>
+        <div class="tracker-slot" onclick="toggleSlot(this)"></div>
+        <div class="tracker-slot" onclick="toggleSlot(this)"></div>
+        <div class="tracker-slot" onclick="toggleSlot(this)"></div>
+      </div>
+    </div>
+
+    <!-- DADOS DE DRAMA Y DINERO -->
+    <div class="status-card">
+      <div class="big-tracker">
+        <div style="font-size:10px; font-weight:700; color:#d6336c;">DADOS AMOR</div>
+        <div class="heart-box"><input type="number" min="0"></div>
+      </div>
+      <div class="big-tracker" style="margin-top:5px;">
+        <div style="font-size:10px; font-weight:700; color:#d6336c;">DADOS DUELO</div>
+        <div class="heart-box"><input type="number" min="0"></div>
+      </div>
+      <div class="big-tracker" style="margin-top:5px;">
+        <div style="font-size:10px; font-weight:700; color:#d6336c;">DINERO</div>
+        <div class="heart-box"><input type="number" min="0"></div>
+      </div>
+    </div>
+
+    <!-- CONDICIONES SOCIALES -->
+    <div class="status-card">
+      <div class="status-header">CONDICIONES (-1d)</div>
+      <div class="checkbox-list">
+        <div class="checkbox-item" onclick="toggleCondition(this)"><div class="bubble-check"></div> Agotamiento</div>
+        <div class="checkbox-item" onclick="toggleCondition(this)"><div class="bubble-check"></div> Bochorno</div>
+        <div class="checkbox-item" onclick="toggleCondition(this)"><div class="bubble-check"></div> Paranoia</div>
+        <div class="checkbox-item" onclick="toggleCondition(this)"><div class="bubble-check"></div> Despecho</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESPECIALIDADES Y DEFECTOS -->
+  <div class="section-title">🎀 Especialidades & Defectos Vinculados</div>
+  <table class="spec-table">
+    <thead>
+      <tr>
+        <th style="width: 25%;">Especialidad</th>
+        <th style="width: 35%;">Efecto / Ventaja</th>
+        <th style="width: 20%;">Defecto</th>
+        <th style="width: 20%;">Complicación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- NOTAS -->
+  <div class="section-title">📝 Escándalos Públicos / Secuelas / Notas</div>
+  <div class="field-card" style="background: #ffffff; padding: 6px 12px 6px 12px;">
+    <textarea class="notes-area" rows="5"></textarea>
+  </div>
+
+</div>
+
+<script>
+  const STORAGE_KEY = 'ai_no_ketto_character_sheet';
+
+  function calculateDerivedStats() {
+    const vigor = parseInt(document.getElementById('attr-vigor').value) || 0;
+    const presencia = parseInt(document.getElementById('attr-presencia').value) || 0;
+    const astucia = parseInt(document.getElementById('attr-astucia').value) || 0;
+    const encanto = parseInt(document.getElementById('attr-encanto').value) || 0;
+
+    const vitalidad = Math.ceil((vigor + presencia) / 2);
+    const compostura = Math.ceil((encanto + astucia) / 2);
+
+    document.getElementById('stat-vitalidad').value = vitalidad > 0 ? vitalidad : '';
+    document.getElementById('stat-compostura').value = compostura > 0 ? compostura : '';
+  }
+
+  function saveData() {
+    const data = {
+      inputs: [],
+      trackers: [],
+      conditions: [],
+      notes: ''
+    };
+
+    document.querySelectorAll('.sheet input').forEach(input => {
+      data.inputs.push(input.value);
+    });
+
+    document.querySelectorAll('.tracker-slot').forEach(slot => {
+      data.trackers.push(slot.classList.contains('active'));
+    });
+
+    document.querySelectorAll('.checkbox-item').forEach(item => {
+      data.conditions.push(item.classList.contains('active'));
+    });
+
+    const notesArea = document.querySelector('.notes-area');
+    if (notesArea) {
+      data.notes = notesArea.value;
+    }
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }
+
+  function loadData() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return;
+
+    try {
+      const data = JSON.parse(saved);
+
+      const inputs = document.querySelectorAll('.sheet input');
+      if (data.inputs) {
+        inputs.forEach((input, index) => {
+          if (data.inputs[index] !== undefined) {
+            input.value = data.inputs[index];
+          }
+        });
+      }
+
+      const trackers = document.querySelectorAll('.tracker-slot');
+      if (data.trackers) {
+        trackers.forEach((slot, index) => {
+          if (data.trackers[index]) {
+            slot.classList.add('active');
+          } else {
+            slot.classList.remove('active');
+          }
+        });
+      }
+
+      const conditions = document.querySelectorAll('.checkbox-item');
+      if (data.conditions) {
+        conditions.forEach((item, index) => {
+          if (data.conditions[index]) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+      }
+
+      const notesArea = document.querySelector('.notes-area');
+      if (notesArea && data.notes !== undefined) {
+        notesArea.value = data.notes;
+      }
+    } catch (e) {
+      console.error('Error al cargar los datos:', e);
+    }
+  }
+
+  function toggleSlot(element) {
+    element.classList.toggle('active');
+    saveData();
+  }
+
+  function toggleCondition(element) {
+    element.classList.toggle('active');
+    saveData();
+  }
+
+  function clearSheet() {
+    if (confirm("¿Estás seguro de que quieres borrar todos los datos de la hoja?")) {
+      localStorage.removeItem(STORAGE_KEY);
+      location.reload();
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    loadData();
+
+    // Escuchar cambios en los atributos para calcular derivados
+    ['attr-vigor', 'attr-presencia', 'attr-astucia', 'attr-encanto'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', () => {
+          calculateDerivedStats();
+          saveData();
+        });
+      }
+    });
+
+    document.querySelector('.sheet').addEventListener('input', saveData);
+  });
+</script>
+
+</body>
+</html>
