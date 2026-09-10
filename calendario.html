@@ -5,6 +5,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ai no Ketto - Agenda Semanal de Escenas</title>
 <style>
+  /* BARRA DE NAVEGACIÓN SUPERIOR */
+.nav-bar {
+  max-width: 1050px;
+  margin: 0 auto 15px auto;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  background: #ffffff;
+  padding: 8px;
+  border-radius: 16px;
+  border: 3px solid #ffccd5;
+  box-shadow: 0 4px 10px rgba(255, 123, 156, 0.15);
+}
+
+.nav-button {
+  font-family: 'Fredoka', cursive;
+  font-size: 14px;
+  color: #d6336c;
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-button:hover {
+  background: #fff5f7;
+  color: #ff5c8a;
+}
+
+.nav-button.active {
+  background: #ff5c8a;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(255, 92, 138, 0.3);
+}
+
+@media print {
+  .nav-bar { display: none !important; } /* Oculta el menú al imprimir */
+}
   @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Fredoka:wght@600;700&family=Mali:wght@500;600;700&display=swap');
 
   * { 
