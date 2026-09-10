@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ai no Ketto - Hoja Estudiantil Interactiva</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Fredoka:wght@600;700&family=Mali:wght@500;600;700&display=swap');
@@ -17,11 +18,10 @@
     background-color: #fde8ed; 
     background-image: radial-gradient(#ffb6c1 1.5px, transparent 1.5px);
     background-size: 20px 20px;
-    padding: 20px; 
+    padding: 15px; 
     color: #5a3e47; 
   }
 
-  /* Barra de herramientas fija para interactividad */
   .toolbar {
     max-width: 880px;
     margin: 0 auto 15px auto;
@@ -35,7 +35,7 @@
     color: white;
     border: none;
     border-radius: 12px;
-    padding: 8px 16px;
+    padding: 10px 16px;
     font-family: 'Fredoka', cursive;
     font-size: 13px;
     cursor: pointer;
@@ -56,19 +56,17 @@
     background: #5a3e47;
   }
 
-  /* Contenedor principal estilo carta dulce */
   .sheet { 
     max-width: 880px; 
     margin: 0 auto; 
     background: #ffffff; 
     border: 4px solid #ff7b9c; 
     border-radius: 24px; 
-    padding: 22px; 
+    padding: 20px; 
     box-shadow: 0 10px 25px rgba(255, 123, 156, 0.25);
     position: relative;
   }
 
-  /* Encabezado */
   .header-box {
     background: linear-gradient(135deg, #ff9ebb 0%, #ff5c8a 100%);
     border-radius: 18px;
@@ -81,9 +79,9 @@
 
   .header-title {
     font-family: 'Fredoka', cursive;
-    font-size: 28px;
+    font-size: 26px;
     letter-spacing: 1.5px;
-    text-shadow: 2px 2px 0px #d6336c, 4px 4px 0px rgba(0,0,0,0.05);
+    text-shadow: 2px 2px 0px #d6336c;
   }
 
   .header-subtitle {
@@ -91,12 +89,11 @@
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2.5px;
+    letter-spacing: 2px;
     opacity: 0.95;
     margin-top: 2px;
   }
 
-  /* Inputs generales */
   input[type="text"], input[type="number"] {
     background: transparent;
     border: none;
@@ -107,7 +104,6 @@
     width: 100%;
   }
 
-  /* Quitar flechas de input number */
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -115,7 +111,6 @@
   }
   input[type=number] { -moz-appearance: textfield; }
 
-  /* Tablas de Datos Personales */
   .info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -127,7 +122,7 @@
     background: #fff5f7;
     border: 2px solid #ffccd5;
     border-radius: 14px;
-    padding: 6px 10px;
+    padding: 8px 12px;
   }
 
   .field-label {
@@ -135,38 +130,33 @@
     font-size: 11px;
     font-weight: 700;
     color: #d6336c;
-    text-shadow: 1px 1px 0px #ffffff;
     display: block;
     margin-bottom: 2px;
   }
 
   .field-input {
-    height: 22px;
+    height: 24px;
     border-bottom: 2px dashed #ffa6b9;
-    font-size: 12px;
+    font-size: 13px;
   }
 
-  /* Titulos de Seccion */
   .section-title {
     background: #ff5c8a;
     color: white;
     font-family: 'Fredoka', cursive;
     font-size: 14px;
-    letter-spacing: 0.5px;
-    padding: 5px 14px;
+    padding: 6px 14px;
     border-radius: 20px;
     display: inline-block;
     margin-top: 10px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     box-shadow: 0 2px 6px rgba(255, 92, 138, 0.25);
     text-shadow: 1px 1px 0px #d6336c;
   }
 
-  /* Grids de Atributos y Habilidades */
-  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 
-  /* Bloque Atributos/Habilidades */
   .attr-card {
     background: #fff8f9;
     border: 2px solid #ffccd5;
@@ -179,8 +169,7 @@
     color: #c41e3a;
     font-family: 'Fredoka', cursive;
     font-size: 13px;
-    letter-spacing: 0.5px;
-    padding: 6px 8px;
+    padding: 8px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -188,8 +177,8 @@
   }
 
   .heart-box {
-    width: 22px;
-    height: 22px;
+    width: 28px;
+    height: 26px;
     background: #ffffff;
     border: 2px solid #ff5c8a;
     border-radius: 6px;
@@ -201,11 +190,11 @@
     font-family: 'Fredoka', cursive;
     font-weight: bold;
     color: #d6336c;
-    font-size: 12px;
+    font-size: 13px;
     height: 100%;
   }
 
-  .skill-list { padding: 6px 8px; }
+  .skill-list { padding: 8px; }
 
   .skill-row {
     display: flex;
@@ -214,15 +203,14 @@
     font-size: 12px;
     font-weight: 700;
     color: #6a4a55;
-    padding: 3px 0;
+    padding: 4px 0;
     border-bottom: 1px dotted #ffd0d8;
   }
   .skill-row:last-child { border-bottom: none; }
 
-  /* Casilla numérica para Habilidades */
   .skill-slot {
-    width: 22px;
-    height: 20px;
+    width: 26px;
+    height: 24px;
     background: #fff;
     border: 2px solid #ffa6b9;
     border-radius: 6px;
@@ -236,14 +224,13 @@
     font-family: 'Fredoka', cursive;
     font-weight: bold;
     color: #d6336c;
-    font-size: 11px;
+    font-size: 12px;
     height: 100%;
   }
 
-  /* Casilla de daño / estrés interactiva */
   .tracker-slot {
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
     background: #fff;
     border: 2px solid #ffa6b9;
     border-radius: 6px;
@@ -260,19 +247,18 @@
   .tracker-slot.active::after {
     content: "♥";
     color: white;
-    font-size: 11px;
+    font-size: 13px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -52%);
   }
 
-  /* Seccion de Resistencia y Salud */
   .status-card {
     background: #fff5f7;
     border: 2px solid #ffccd5;
     border-radius: 14px;
-    padding: 8px;
+    padding: 10px;
   }
 
   .status-header {
@@ -289,8 +275,8 @@
   }
 
   .big-heart {
-    width: 34px;
-    height: 30px;
+    width: 36px;
+    height: 32px;
     background: #ff7b9c;
     color: white;
     border-radius: 8px;
@@ -302,24 +288,24 @@
     color: white;
     text-align: center;
     font-family: 'Fredoka', cursive;
-    font-size: 14px;
+    font-size: 15px;
     height: 100%;
   }
 
-  .checkbox-list { margin-top: 4px; display: flex; flex-direction: column; gap: 3px; }
+  .checkbox-list { margin-top: 6px; display: flex; flex-direction: column; gap: 6px; }
   .checkbox-item { 
-    font-size: 11px; 
+    font-size: 12px; 
     font-weight: 700; 
     color: #7a5260; 
     display: flex; 
     align-items: center; 
-    gap: 5px; 
+    gap: 8px; 
     cursor: pointer;
   }
   
   .bubble-check { 
-    width: 12px; 
-    height: 12px; 
+    width: 16px; 
+    height: 16px; 
     border: 2px solid #ff5c8a; 
     border-radius: 50%; 
     background: #fff;
@@ -330,9 +316,14 @@
     background: #ff5c8a;
   }
 
-  /* Tabla de Especialidades */
+  .spec-table-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+
   .spec-table {
     width: 100%;
+    min-width: 500px;
     border-collapse: separate;
     border-spacing: 0;
     margin-top: 5px;
@@ -347,14 +338,14 @@
     font-family: 'Comfortaa', cursive;
     font-size: 10px;
     font-weight: 700;
-    padding: 6px;
+    padding: 8px;
     text-transform: uppercase;
   }
 
   .spec-table td {
     background: #ffffff;
     border-top: 1px solid #ffccd5;
-    height: 30px;
+    height: 32px;
     padding: 2px 6px;
   }
 
@@ -376,48 +367,64 @@
     min-height: 115px;
   }
 
-  /* Reglas de Impresión / PDF */
+  /* AJUSTES RESPONSIVOS PARA MÓVILES */
+  @media (max-width: 650px) {
+    body { padding: 8px; }
+    .sheet { padding: 14px; border-radius: 18px; }
+    
+    .toolbar {
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .btn {
+      width: 100%;
+      text-align: center;
+      padding: 12px;
+      font-size: 14px;
+    }
+
+    .info-grid { grid-template-columns: 1fr; }
+    .grid-4 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr; }
+
+    .header-title { font-size: 22px; }
+    .header-subtitle { font-size: 9px; }
+
+    .tracker-slot { width: 30px; height: 30px; }
+    .tracker-slot.active::after { font-size: 16px; }
+
+    .heart-box { width: 32px; height: 30px; }
+    .heart-box input { font-size: 14px; }
+
+    .skill-slot { width: 30px; height: 28px; }
+    .skill-slot input { font-size: 13px; }
+
+    .bubble-check { width: 18px; height: 18px; }
+    .checkbox-item { font-size: 13px; padding: 2px 0; }
+  }
+
   @media print {
-    body {
-      background: white !important;
-      padding: 0 !important;
-    }
-
-    .no-print {
-      display: none !important;
-    }
-
-    .sheet {
-      box-shadow: none !important;
-      border: 3px solid #ff7b9c !important;
-      max-width: 100% !important;
-      width: 100% !important;
-      padding: 10px !important;
-    }
-
-    * {
-      -webkit-print-color-adjust: exact !important;
-      print-color-adjust: exact !important;
-    }
+    body { background: white !important; padding: 0 !important; }
+    .no-print { display: none !important; }
+    .sheet { box-shadow: none !important; border: 3px solid #ff7b9c !important; width: 100% !important; padding: 10px !important; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
   }
 </style>
 </head>
 <body>
 
-<!-- BARRA DE ACCIÓN -->
 <div class="toolbar no-print">
   <button class="btn btn-danger" onclick="clearSheet()">🧹 Reiniciar Hoja</button>
   <button class="btn" onclick="window.print()">🖨️ Imprimir / Guardar en PDF</button>
 </div>
 
 <div class="sheet">
-  <!-- ENCABEZADO ESTILO OTOME/SHOJO -->
   <div class="header-box">
     <div class="header-title">🍓 AI NO KETTO (愛の決闘) 🍓</div>
     <div class="header-subtitle">HOJA DE PERSONAJE ESTUDIANTIL</div>
   </div>
 
-  <!-- DATOS PERSONALES -->
   <div class="info-grid">
     <div class="field-card">
       <span class="field-label">🎀 Nombre del Estudiante</span>
@@ -437,10 +444,8 @@
     </div>
   </div>
 
-  <!-- ATRIBUTOS BASE Y HABILIDADES PURAS -->
   <div class="section-title">✨ Atributos Base & Habilidades Puras</div>
   <div class="grid-4">
-    <!-- VIGOR -->
     <div class="attr-card">
       <div class="attr-header">
         VIGOR 
@@ -451,7 +456,6 @@
         <div class="skill-row"><span>Bronca</span><div class="skill-slot"><input type="number" min="0"></div></div>
       </div>
     </div>
-    <!-- PRESENCIA -->
     <div class="attr-card">
       <div class="attr-header">
         PRESENCIA 
@@ -462,7 +466,6 @@
         <div class="skill-row"><span>Dramatismo</span><div class="skill-slot"><input type="number" min="0"></div></div>
       </div>
     </div>
-    <!-- ASTUCIA -->
     <div class="attr-card">
       <div class="attr-header">
         ASTUCIA 
@@ -473,7 +476,6 @@
         <div class="skill-row"><span>Sigilo / Esc.</span><div class="skill-slot"><input type="number" min="0"></div></div>
       </div>
     </div>
-    <!-- ENCANTO -->
     <div class="attr-card">
       <div class="attr-header">
         ENCANTO 
@@ -486,7 +488,6 @@
     </div>
   </div>
 
-  <!-- HABILIDADES MIXTAS -->
   <div class="section-title">🌸 Habilidades Mixtas</div>
   <div class="grid-3">
     <div class="attr-card">
@@ -509,17 +510,15 @@
     </div>
   </div>
 
-  <!-- RESISTENCIA Y DRAMA -->
-  <div class="section-title">💌 Resistencia, Salud & Reservas de Drama</div>
+  <div class="section-title">💌 Resistencia, Salud & Reservas</div>
   <div class="grid-4">
-    <!-- VITALIDAD -->
     <div class="status-card">
       <div class="big-tracker">
         <div><div class="status-header">VITALIDAD</div><small style="font-size:9px; color:#888;">⌈(Vig+Pres)/2⌉</small></div>
         <div class="big-heart"><input type="number" id="stat-vitalidad" min="0" max="5"></div>
       </div>
       <div style="font-size:10px; font-weight:700; color:#d6336c; margin-top:5px;">Daño Físico:</div>
-      <div style="display:flex; gap:3px; margin-top:2px;">
+      <div style="display:flex; gap:4px; margin-top:4px;">
         <div class="tracker-slot" onclick="toggleSlot(this)"></div>
         <div class="tracker-slot" onclick="toggleSlot(this)"></div>
         <div class="tracker-slot" onclick="toggleSlot(this)"></div>
@@ -528,14 +527,13 @@
       </div>
     </div>
 
-    <!-- COMPOSTURA -->
     <div class="status-card">
       <div class="big-tracker">
         <div><div class="status-header">COMPOSTURA</div><small style="font-size:9px; color:#888;">⌈(Enc+Ast)/2⌉</small></div>
         <div class="big-heart"><input type="number" id="stat-compostura" min="0" max="5"></div>
       </div>
       <div style="font-size:10px; font-weight:700; color:#d6336c; margin-top:5px;">Estrés / Vergüenza:</div>
-      <div style="display:flex; gap:3px; margin-top:2px;">
+      <div style="display:flex; gap:4px; margin-top:4px;">
         <div class="tracker-slot" onclick="toggleSlot(this)"></div>
         <div class="tracker-slot" onclick="toggleSlot(this)"></div>
         <div class="tracker-slot" onclick="toggleSlot(this)"></div>
@@ -544,7 +542,6 @@
       </div>
     </div>
 
-    <!-- DADOS DE DRAMA Y DINERO -->
     <div class="status-card">
       <div class="big-tracker">
         <div style="font-size:10px; font-weight:700; color:#d6336c;">DADOS AMOR</div>
@@ -560,7 +557,6 @@
       </div>
     </div>
 
-    <!-- CONDICIONES SOCIALES -->
     <div class="status-card">
       <div class="status-header">CONDICIONES (-1d)</div>
       <div class="checkbox-list">
@@ -572,45 +568,44 @@
     </div>
   </div>
 
-  <!-- ESPECIALIDADES Y DEFECTOS -->
-  <div class="section-title">🎀 Especialidades & Defectos Vinculados</div>
-  <table class="spec-table">
-    <thead>
-      <tr>
-        <th style="width: 25%;">Especialidad</th>
-        <th style="width: 35%;">Efecto / Ventaja</th>
-        <th style="width: 20%;">Defecto</th>
-        <th style="width: 20%;">Complicación</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="section-title">🎀 Especialidades & Defectos</div>
+  <div class="spec-table-container">
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th style="width: 25%;">Especialidad</th>
+          <th style="width: 35%;">Efecto / Ventaja</th>
+          <th style="width: 20%;">Defecto</th>
+          <th style="width: 20%;">Complicación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <!-- NOTAS -->
-  <div class="section-title">📝 Escándalos Públicos / Secuelas / Notas</div>
+  <div class="section-title">📝 Notas / Escándalos</div>
   <div class="field-card" style="background: #ffffff; padding: 6px 12px 6px 12px;">
     <textarea class="notes-area" rows="5"></textarea>
   </div>
-
 </div>
 
 <script>
@@ -630,12 +625,7 @@
   }
 
   function saveData() {
-    const data = {
-      inputs: [],
-      trackers: [],
-      conditions: [],
-      notes: ''
-    };
+    const data = { inputs: [], trackers: [], conditions: [], notes: '' };
 
     document.querySelectorAll('.sheet input').forEach(input => {
       data.inputs.push(input.value);
@@ -650,9 +640,7 @@
     });
 
     const notesArea = document.querySelector('.notes-area');
-    if (notesArea) {
-      data.notes = notesArea.value;
-    }
+    if (notesArea) data.notes = notesArea.value;
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   }
@@ -667,40 +655,30 @@
       const inputs = document.querySelectorAll('.sheet input');
       if (data.inputs) {
         inputs.forEach((input, index) => {
-          if (data.inputs[index] !== undefined) {
-            input.value = data.inputs[index];
-          }
+          if (data.inputs[index] !== undefined) input.value = data.inputs[index];
         });
       }
 
       const trackers = document.querySelectorAll('.tracker-slot');
       if (data.trackers) {
         trackers.forEach((slot, index) => {
-          if (data.trackers[index]) {
-            slot.classList.add('active');
-          } else {
-            slot.classList.remove('active');
-          }
+          if (data.trackers[index]) slot.classList.add('active');
+          else slot.classList.remove('active');
         });
       }
 
       const conditions = document.querySelectorAll('.checkbox-item');
       if (data.conditions) {
         conditions.forEach((item, index) => {
-          if (data.conditions[index]) {
-            item.classList.add('active');
-          } else {
-            item.classList.remove('active');
-          }
+          if (data.conditions[index]) item.classList.add('active');
+          else item.classList.remove('active');
         });
       }
 
       const notesArea = document.querySelector('.notes-area');
-      if (notesArea && data.notes !== undefined) {
-        notesArea.value = data.notes;
-      }
+      if (notesArea && data.notes !== undefined) notesArea.value = data.notes;
     } catch (e) {
-      console.error('Error al cargar los datos:', e);
+      console.error('Error al cargar datos:', e);
     }
   }
 
@@ -724,7 +702,6 @@
   document.addEventListener('DOMContentLoaded', () => {
     loadData();
 
-    // Escuchar cambios en los atributos para calcular derivados
     ['attr-vigor', 'attr-presencia', 'attr-astucia', 'attr-encanto'].forEach(id => {
       const el = document.getElementById(id);
       if (el) {
