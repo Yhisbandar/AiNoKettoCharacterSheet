@@ -4,12 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ai no Ketto - Hoja Estudiantil Interactiva</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Fredoka:wght@600;700&family=Mali:wght@500;600;700&display=swap');
 
+<!-- CARGA DIRECTA DE FUENTES PARA MÓVIL Y PC -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Fredoka:wght@600;700&family=Mali:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
   * { 
     box-sizing: border-box; 
-    font-family: 'Mali', cursive; 
+    font-family: 'Mali', 'Comfortaa', sans-serif; 
     margin: 0; 
     padding: 0; 
   }
@@ -20,6 +24,44 @@
     background-size: 20px 20px;
     padding: 15px; 
     color: #5a3e47; 
+  }
+
+  /* BARRA DE NAVEGACIÓN SUPERIOR */
+  .nav-bar {
+    max-width: 880px;
+    margin: 0 auto 15px auto;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    background: #ffffff;
+    padding: 8px;
+    border-radius: 16px;
+    border: 3px solid #ffccd5;
+    box-shadow: 0 4px 10px rgba(255, 123, 156, 0.15);
+  }
+
+  .nav-button {
+    font-family: 'Fredoka', 'Comfortaa', sans-serif;
+    font-size: 14px;
+    color: #d6336c;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nav-button:hover {
+    background: #fff5f7;
+    color: #ff5c8a;
+  }
+
+  .nav-button.active {
+    background: #ff5c8a;
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(255, 92, 138, 0.3);
   }
 
   .toolbar {
@@ -36,7 +78,7 @@
     border: none;
     border-radius: 12px;
     padding: 10px 16px;
-    font-family: 'Fredoka', cursive;
+    font-family: 'Fredoka', 'Comfortaa', sans-serif;
     font-size: 13px;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(255, 92, 138, 0.3);
@@ -48,13 +90,8 @@
     transform: translateY(-2px);
   }
 
-  .btn-danger {
-    background: #7a5260;
-  }
-
-  .btn-danger:hover {
-    background: #5a3e47;
-  }
+  .btn-danger { background: #7a5260; }
+  .btn-danger:hover { background: #5a3e47; }
 
   .sheet { 
     max-width: 880px; 
@@ -78,14 +115,14 @@
   }
 
   .header-title {
-    font-family: 'Fredoka', cursive;
+    font-family: 'Fredoka', 'Comfortaa', sans-serif;
     font-size: 26px;
     letter-spacing: 1.5px;
     text-shadow: 2px 2px 0px #d6336c;
   }
 
   .header-subtitle {
-    font-family: 'Comfortaa', cursive;
+    font-family: 'Comfortaa', sans-serif;
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
@@ -98,7 +135,7 @@
     background: transparent;
     border: none;
     outline: none;
-    font-family: 'Mali', cursive;
+    font-family: 'Mali', 'Comfortaa', sans-serif;
     font-weight: 600;
     color: #5a3e47;
     width: 100%;
@@ -126,7 +163,7 @@
   }
 
   .field-label {
-    font-family: 'Comfortaa', cursive;
+    font-family: 'Comfortaa', sans-serif;
     font-size: 11px;
     font-weight: 700;
     color: #d6336c;
@@ -143,7 +180,7 @@
   .section-title {
     background: #ff5c8a;
     color: white;
-    font-family: 'Fredoka', cursive;
+    font-family: 'Fredoka', 'Comfortaa', sans-serif;
     font-size: 14px;
     padding: 6px 14px;
     border-radius: 20px;
@@ -167,7 +204,7 @@
   .attr-header {
     background: #ffe3e8;
     color: #c41e3a;
-    font-family: 'Fredoka', cursive;
+    font-family: 'Fredoka', 'Comfortaa', sans-serif;
     font-size: 13px;
     padding: 8px 10px;
     display: flex;
@@ -187,7 +224,7 @@
 
   .heart-box input {
     text-align: center;
-    font-family: 'Fredoka', cursive;
+    font-family: 'Fredoka', 'Comfortaa', sans-serif;
     font-weight: bold;
     color: #d6336c;
     font-size: 13px;
@@ -221,7 +258,7 @@
 
   .skill-slot input {
     text-align: center;
-    font-family: 'Fredoka', cursive;
+    font-family: 'Fredoka', 'Comfortaa', sans-serif;
     font-weight: bold;
     color: #d6336c;
     font-size: 12px;
@@ -262,7 +299,7 @@
   }
 
   .status-header {
-    font-family: 'Fredoka', cursive;
+    font-family: 'Fredoka', 'Comfortaa', sans-serif;
     font-size: 12px;
     color: #d6336c;
     margin-bottom: 2px;
@@ -287,7 +324,7 @@
   .big-heart input {
     color: white;
     text-align: center;
-    font-family: 'Fredoka', cursive;
+    font-family: 'Fredoka', 'Comfortaa', sans-serif;
     font-size: 15px;
     height: 100%;
   }
@@ -335,7 +372,7 @@
   .spec-table th {
     background: #ffe3e8;
     color: #d6336c;
-    font-family: 'Comfortaa', cursive;
+    font-family: 'Comfortaa', sans-serif;
     font-size: 10px;
     font-weight: 700;
     padding: 8px;
@@ -361,16 +398,16 @@
       #ffa6b9 23px
     );
     line-height: 23px;
-    font-family: 'Mali', cursive;
+    font-family: 'Mali', 'Comfortaa', sans-serif;
     font-size: 12px;
     color: #5a3e47;
     min-height: 115px;
   }
 
-  /* AJUSTES RESPONSIVOS PARA MÓVILES */
   @media (max-width: 650px) {
     body { padding: 8px; }
     .sheet { padding: 14px; border-radius: 18px; }
+    .nav-bar { flex-wrap: wrap; }
     
     .toolbar {
       flex-direction: column;
@@ -406,7 +443,7 @@
 
   @media print {
     body { background: white !important; padding: 0 !important; }
-    .no-print { display: none !important; }
+    .no-print, .nav-bar { display: none !important; }
     .sheet { box-shadow: none !important; border: 3px solid #ff7b9c !important; width: 100% !important; padding: 10px !important; }
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
   }
@@ -414,199 +451,205 @@
 </head>
 <body>
 
-<div class="toolbar no-print">
-  <button class="btn btn-danger" onclick="clearSheet()">🧹 Reiniciar Hoja</button>
-  <button class="btn" onclick="window.print()">🖨️ Imprimir / Guardar en PDF</button>
-</div>
+  <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
+  <nav class="nav-bar no-print">
+    <a href="index.html" class="nav-button active">👤 Hoja de Personaje</a>
+    <a href="calendario.html" class="nav-button">📅 Calendario Semanal</a>
+  </nav>
 
-<div class="sheet">
-  <div class="header-box">
-    <div class="header-title">🍓 AI NO KETTO (愛の決闘) 🍓</div>
-    <div class="header-subtitle">HOJA DE PERSONAJE ESTUDIANTIL</div>
+  <div class="toolbar no-print">
+    <button class="btn btn-danger" onclick="clearSheet()">🧹 Reiniciar Hoja</button>
+    <button class="btn" onclick="window.print()">🖨️ Imprimir / Guardar en PDF</button>
   </div>
 
-  <div class="info-grid">
-    <div class="field-card">
-      <span class="field-label">🎀 Nombre del Estudiante</span>
-      <input type="text" class="field-input">
+  <div class="sheet">
+    <div class="header-box">
+      <div class="header-title">🍓 AI NO KETTO (愛の決闘) 🍓</div>
+      <div class="header-subtitle">HOJA DE PERSONAJE ESTUDIANTIL</div>
     </div>
-    <div class="field-card">
-      <span class="field-label">👗 Apariencia / Uniforme</span>
-      <input type="text" class="field-input">
+
+    <div class="info-grid">
+      <div class="field-card">
+        <span class="field-label">🎀 Nombre del Estudiante</span>
+        <input type="text" class="field-input">
+      </div>
+      <div class="field-card">
+        <span class="field-label">👗 Apariencia / Uniforme</span>
+        <input type="text" class="field-input">
+      </div>
+      <div class="field-card">
+        <span class="field-label">💖 Objetivo del Corazón</span>
+        <input type="text" class="field-input">
+      </div>
+      <div class="field-card">
+        <span class="field-label">🧸 Objeto Sentimental (1/sesión)</span>
+        <input type="text" class="field-input">
+      </div>
     </div>
-    <div class="field-card">
-      <span class="field-label">💖 Objetivo del Corazón</span>
-      <input type="text" class="field-input">
+
+    <div class="section-title">✨ Atributos Base & Habilidades Puras</div>
+    <div class="grid-4">
+      <div class="attr-card">
+        <div class="attr-header">
+          VIGOR 
+          <div class="heart-box"><input type="number" id="attr-vigor" min="0" max="5"></div>
+        </div>
+        <div class="skill-list">
+          <div class="skill-row"><span>Aguante</span><div class="skill-slot"><input type="number" min="0"></div></div>
+          <div class="skill-row"><span>Bronca</span><div class="skill-slot"><input type="number" min="0"></div></div>
+        </div>
+      </div>
+      <div class="attr-card">
+        <div class="attr-header">
+          PRESENCIA 
+          <div class="heart-box"><input type="number" id="attr-presencia" min="0" max="5"></div>
+        </div>
+        <div class="skill-list">
+          <div class="skill-row"><span>Glamour</span><div class="skill-slot"><input type="number" min="0"></div></div>
+          <div class="skill-row"><span>Dramatismo</span><div class="skill-slot"><input type="number" min="0"></div></div>
+        </div>
+      </div>
+      <div class="attr-card">
+        <div class="attr-header">
+          ASTUCIA 
+          <div class="heart-box"><input type="number" id="attr-astucia" min="0" max="5"></div>
+        </div>
+        <div class="skill-list">
+          <div class="skill-row"><span>Intelecto</span><div class="skill-slot"><input type="number" min="0"></div></div>
+          <div class="skill-row"><span>Sigilo / Esc.</span><div class="skill-slot"><input type="number" min="0"></div></div>
+        </div>
+      </div>
+      <div class="attr-card">
+        <div class="attr-header">
+          ENCANTO 
+          <div class="heart-box"><input type="number" id="attr-encanto" min="0" max="5"></div>
+        </div>
+        <div class="skill-list">
+          <div class="skill-row"><span>Empatía</span><div class="skill-slot"><input type="number" min="0"></div></div>
+          <div class="skill-row"><span>Coqueteo</span><div class="skill-slot"><input type="number" min="0"></div></div>
+        </div>
+      </div>
     </div>
-    <div class="field-card">
-      <span class="field-label">🧸 Objeto Sentimental (1/sesión)</span>
-      <input type="text" class="field-input">
+
+    <div class="section-title">🌸 Habilidades Mixtas</div>
+    <div class="grid-3">
+      <div class="attr-card">
+        <div class="skill-list">
+          <div class="skill-row"><span>Físico <small style="color:#a06070; font-size:10px;">(Vig+Pres)</small></span><div class="skill-slot"><input type="number" min="0"></div></div>
+          <div class="skill-row"><span>Juego de Manos <small style="color:#a06070; font-size:10px;">(Vig+Ast)</small></span><div class="skill-slot"><input type="number" min="0"></div></div>
+        </div>
+      </div>
+      <div class="attr-card">
+        <div class="skill-list">
+          <div class="skill-row"><span>Presión <small style="color:#a06070; font-size:10px;">(Vig+Enc)</small></span><div class="skill-slot"><input type="number" min="0"></div></div>
+          <div class="skill-row"><span>Disimulo <small style="color:#a06070; font-size:10px;">(Pres+Ast)</small></span><div class="skill-slot"><input type="number" min="0"></div></div>
+        </div>
+      </div>
+      <div class="attr-card">
+        <div class="skill-list">
+          <div class="skill-row"><span>Persuasión <small style="color:#a06070; font-size:10px;">(Pres+Enc)</small></span><div class="skill-slot"><input type="number" min="0"></div></div>
+          <div class="skill-row"><span>Perspicacia <small style="color:#a06070; font-size:10px;">(Ast+Enc)</small></span><div class="skill-slot"><input type="number" min="0"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">💌 Resistencia, Salud & Reservas</div>
+    <div class="grid-4">
+      <div class="status-card">
+        <div class="big-tracker">
+          <div><div class="status-header">VITALIDAD</div><small style="font-size:9px; color:#888;">⌈(Vig+Pres)/2⌉</small></div>
+          <div class="big-heart"><input type="number" id="stat-vitalidad" min="0" max="5"></div>
+        </div>
+        <div style="font-size:10px; font-weight:700; color:#d6336c; margin-top:5px;">Daño Físico:</div>
+        <div style="display:flex; gap:4px; margin-top:4px;">
+          <div class="tracker-slot" onclick="toggleSlot(this)"></div>
+          <div class="tracker-slot" onclick="toggleSlot(this)"></div>
+          <div class="tracker-slot" onclick="toggleSlot(this)"></div>
+          <div class="tracker-slot" onclick="toggleSlot(this)"></div>
+          <div class="tracker-slot" onclick="toggleSlot(this)"></div>
+        </div>
+      </div>
+
+      <div class="status-card">
+        <div class="big-tracker">
+          <div><div class="status-header">COMPOSTURA</div><small style="font-size:9px; color:#888;">⌈(Enc+Ast)/2⌉</small></div>
+          <div class="big-heart"><input type="number" id="stat-compostura" min="0" max="5"></div>
+        </div>
+        <div style="font-size:10px; font-weight:700; color:#d6336c; margin-top:5px;">Estrés / Vergüenza:</div>
+        <div style="display:flex; gap:4px; margin-top:4px;">
+          <div class="tracker-slot" onclick="toggleSlot(this)"></div>
+          <div class="tracker-slot" onclick="toggleSlot(this)"></div>
+          <div class="tracker-slot" onclick="toggleSlot(this)"></div>
+          <div class="tracker-slot" onclick="toggleSlot(this)"></div>
+          <div class="tracker-slot" onclick="toggleSlot(this)"></div>
+        </div>
+      </div>
+
+      <div class="status-card">
+        <div class="big-tracker">
+          <div style="font-size:10px; font-weight:700; color:#d6336c;">DADOS AMOR</div>
+          <div class="heart-box"><input type="number" min="0"></div>
+        </div>
+        <div class="big-tracker" style="margin-top:5px;">
+          <div style="font-size:10px; font-weight:700; color:#d6336c;">DADOS DUELO</div>
+          <div class="heart-box"><input type="number" min="0"></div>
+        </div>
+        <div class="big-tracker" style="margin-top:5px;">
+          <div style="font-size:10px; font-weight:700; color:#d6336c;">DINERO</div>
+          <div class="heart-box"><input type="number" min="0"></div>
+        </div>
+      </div>
+
+      <div class="status-card">
+        <div class="status-header">CONDICIONES (-1d)</div>
+        <div class="checkbox-list">
+          <div class="checkbox-item" onclick="toggleCondition(this)"><div class="bubble-check"></div> Agotamiento</div>
+          <div class="checkbox-item" onclick="toggleCondition(this)"><div class="bubble-check"></div> Bochorno</div>
+          <div class="checkbox-item" onclick="toggleCondition(this)"><div class="bubble-check"></div> Paranoia</div>
+          <div class="checkbox-item" onclick="toggleCondition(this)"><div class="bubble-check"></div> Despecho</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">🎀 Especialidades & Defectos</div>
+    <div class="spec-table-container">
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th style="width: 25%;">Especialidad</th>
+            <th style="width: 35%;">Efecto / Ventaja</th>
+            <th style="width: 20%;">Defecto</th>
+            <th style="width: 20%;">Complicación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-title">📝 Notas / Escándalos</div>
+    <div class="field-card" style="background: #ffffff; padding: 6px 12px 6px 12px;">
+      <textarea class="notes-area" rows="5"></textarea>
     </div>
   </div>
-
-  <div class="section-title">✨ Atributos Base & Habilidades Puras</div>
-  <div class="grid-4">
-    <div class="attr-card">
-      <div class="attr-header">
-        VIGOR 
-        <div class="heart-box"><input type="number" id="attr-vigor" min="0" max="5"></div>
-      </div>
-      <div class="skill-list">
-        <div class="skill-row"><span>Aguante</span><div class="skill-slot"><input type="number" min="0"></div></div>
-        <div class="skill-row"><span>Bronca</span><div class="skill-slot"><input type="number" min="0"></div></div>
-      </div>
-    </div>
-    <div class="attr-card">
-      <div class="attr-header">
-        PRESENCIA 
-        <div class="heart-box"><input type="number" id="attr-presencia" min="0" max="5"></div>
-      </div>
-      <div class="skill-list">
-        <div class="skill-row"><span>Glamour</span><div class="skill-slot"><input type="number" min="0"></div></div>
-        <div class="skill-row"><span>Dramatismo</span><div class="skill-slot"><input type="number" min="0"></div></div>
-      </div>
-    </div>
-    <div class="attr-card">
-      <div class="attr-header">
-        ASTUCIA 
-        <div class="heart-box"><input type="number" id="attr-astucia" min="0" max="5"></div>
-      </div>
-      <div class="skill-list">
-        <div class="skill-row"><span>Intelecto</span><div class="skill-slot"><input type="number" min="0"></div></div>
-        <div class="skill-row"><span>Sigilo / Esc.</span><div class="skill-slot"><input type="number" min="0"></div></div>
-      </div>
-    </div>
-    <div class="attr-card">
-      <div class="attr-header">
-        ENCANTO 
-        <div class="heart-box"><input type="number" id="attr-encanto" min="0" max="5"></div>
-      </div>
-      <div class="skill-list">
-        <div class="skill-row"><span>Empatía</span><div class="skill-slot"><input type="number" min="0"></div></div>
-        <div class="skill-row"><span>Coqueteo</span><div class="skill-slot"><input type="number" min="0"></div></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-title">🌸 Habilidades Mixtas</div>
-  <div class="grid-3">
-    <div class="attr-card">
-      <div class="skill-list">
-        <div class="skill-row"><span>Físico <small style="color:#a06070; font-size:10px;">(Vig+Pres)</small></span><div class="skill-slot"><input type="number" min="0"></div></div>
-        <div class="skill-row"><span>Juego de Manos <small style="color:#a06070; font-size:10px;">(Vig+Ast)</small></span><div class="skill-slot"><input type="number" min="0"></div></div>
-      </div>
-    </div>
-    <div class="attr-card">
-      <div class="skill-list">
-        <div class="skill-row"><span>Presión <small style="color:#a06070; font-size:10px;">(Vig+Enc)</small></span><div class="skill-slot"><input type="number" min="0"></div></div>
-        <div class="skill-row"><span>Disimulo <small style="color:#a06070; font-size:10px;">(Pres+Ast)</small></span><div class="skill-slot"><input type="number" min="0"></div></div>
-      </div>
-    </div>
-    <div class="attr-card">
-      <div class="skill-list">
-        <div class="skill-row"><span>Persuasión <small style="color:#a06070; font-size:10px;">(Pres+Enc)</small></span><div class="skill-slot"><input type="number" min="0"></div></div>
-        <div class="skill-row"><span>Perspicacia <small style="color:#a06070; font-size:10px;">(Ast+Enc)</small></span><div class="skill-slot"><input type="number" min="0"></div></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-title">💌 Resistencia, Salud & Reservas</div>
-  <div class="grid-4">
-    <div class="status-card">
-      <div class="big-tracker">
-        <div><div class="status-header">VITALIDAD</div><small style="font-size:9px; color:#888;">⌈(Vig+Pres)/2⌉</small></div>
-        <div class="big-heart"><input type="number" id="stat-vitalidad" min="0" max="5"></div>
-      </div>
-      <div style="font-size:10px; font-weight:700; color:#d6336c; margin-top:5px;">Daño Físico:</div>
-      <div style="display:flex; gap:4px; margin-top:4px;">
-        <div class="tracker-slot" onclick="toggleSlot(this)"></div>
-        <div class="tracker-slot" onclick="toggleSlot(this)"></div>
-        <div class="tracker-slot" onclick="toggleSlot(this)"></div>
-        <div class="tracker-slot" onclick="toggleSlot(this)"></div>
-        <div class="tracker-slot" onclick="toggleSlot(this)"></div>
-      </div>
-    </div>
-
-    <div class="status-card">
-      <div class="big-tracker">
-        <div><div class="status-header">COMPOSTURA</div><small style="font-size:9px; color:#888;">⌈(Enc+Ast)/2⌉</small></div>
-        <div class="big-heart"><input type="number" id="stat-compostura" min="0" max="5"></div>
-      </div>
-      <div style="font-size:10px; font-weight:700; color:#d6336c; margin-top:5px;">Estrés / Vergüenza:</div>
-      <div style="display:flex; gap:4px; margin-top:4px;">
-        <div class="tracker-slot" onclick="toggleSlot(this)"></div>
-        <div class="tracker-slot" onclick="toggleSlot(this)"></div>
-        <div class="tracker-slot" onclick="toggleSlot(this)"></div>
-        <div class="tracker-slot" onclick="toggleSlot(this)"></div>
-        <div class="tracker-slot" onclick="toggleSlot(this)"></div>
-      </div>
-    </div>
-
-    <div class="status-card">
-      <div class="big-tracker">
-        <div style="font-size:10px; font-weight:700; color:#d6336c;">DADOS AMOR</div>
-        <div class="heart-box"><input type="number" min="0"></div>
-      </div>
-      <div class="big-tracker" style="margin-top:5px;">
-        <div style="font-size:10px; font-weight:700; color:#d6336c;">DADOS DUELO</div>
-        <div class="heart-box"><input type="number" min="0"></div>
-      </div>
-      <div class="big-tracker" style="margin-top:5px;">
-        <div style="font-size:10px; font-weight:700; color:#d6336c;">DINERO</div>
-        <div class="heart-box"><input type="number" min="0"></div>
-      </div>
-    </div>
-
-    <div class="status-card">
-      <div class="status-header">CONDICIONES (-1d)</div>
-      <div class="checkbox-list">
-        <div class="checkbox-item" onclick="toggleCondition(this)"><div class="bubble-check"></div> Agotamiento</div>
-        <div class="checkbox-item" onclick="toggleCondition(this)"><div class="bubble-check"></div> Bochorno</div>
-        <div class="checkbox-item" onclick="toggleCondition(this)"><div class="bubble-check"></div> Paranoia</div>
-        <div class="checkbox-item" onclick="toggleCondition(this)"><div class="bubble-check"></div> Despecho</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-title">🎀 Especialidades & Defectos</div>
-  <div class="spec-table-container">
-    <table class="spec-table">
-      <thead>
-        <tr>
-          <th style="width: 25%;">Especialidad</th>
-          <th style="width: 35%;">Efecto / Ventaja</th>
-          <th style="width: 20%;">Defecto</th>
-          <th style="width: 20%;">Complicación</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><input type="text"></td>
-          <td><input type="text"></td>
-          <td><input type="text"></td>
-          <td><input type="text"></td>
-        </tr>
-        <tr>
-          <td><input type="text"></td>
-          <td><input type="text"></td>
-          <td><input type="text"></td>
-          <td><input type="text"></td>
-        </tr>
-        <tr>
-          <td><input type="text"></td>
-          <td><input type="text"></td>
-          <td><input type="text"></td>
-          <td><input type="text"></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="section-title">📝 Notas / Escándalos</div>
-  <div class="field-card" style="background: #ffffff; padding: 6px 12px 6px 12px;">
-    <textarea class="notes-area" rows="5"></textarea>
-  </div>
-</div>
 
 <script>
   const STORAGE_KEY = 'ai_no_ketto_character_sheet';
