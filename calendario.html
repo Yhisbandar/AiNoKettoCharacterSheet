@@ -4,53 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ai no Ketto - Agenda Semanal de Escenas</title>
+
+<!-- CARGA DIRECTA DE FUENTES PARA MÓVIL Y PC -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Fredoka:wght@600;700&family=Mali:wght@500;600;700&display=swap" rel="stylesheet">
+
 <style>
-  /* BARRA DE NAVEGACIÓN SUPERIOR */
-.nav-bar {
-  max-width: 1050px;
-  margin: 0 auto 15px auto;
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  background: #ffffff;
-  padding: 8px;
-  border-radius: 16px;
-  border: 3px solid #ffccd5;
-  box-shadow: 0 4px 10px rgba(255, 123, 156, 0.15);
-}
-
-.nav-button {
-  font-family: 'Fredoka', cursive;
-  font-size: 14px;
-  color: #d6336c;
-  text-decoration: none;
-  padding: 8px 18px;
-  border-radius: 10px;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.nav-button:hover {
-  background: #fff5f7;
-  color: #ff5c8a;
-}
-
-.nav-button.active {
-  background: #ff5c8a;
-  color: #ffffff;
-  box-shadow: 0 2px 6px rgba(255, 92, 138, 0.3);
-}
-
-@media print {
-  .nav-bar { display: none !important; } /* Oculta el menú al imprimir */
-}
-  @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Fredoka:wght@600;700&family=Mali:wght@500;600;700&display=swap');
-
   * { 
     box-sizing: border-box; 
-    font-family: 'Mali', cursive; 
+    font-family: 'Mali', 'Comfortaa', sans-serif; 
     margin: 0; 
     padding: 0; 
   }
@@ -61,6 +24,44 @@
     background-size: 20px 20px;
     padding: 15px; 
     color: #5a3e47; 
+  }
+
+  /* BARRA DE NAVEGACIÓN SUPERIOR */
+  .nav-bar {
+    max-width: 1050px;
+    margin: 0 auto 15px auto;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    background: #ffffff;
+    padding: 8px;
+    border-radius: 16px;
+    border: 3px solid #ffccd5;
+    box-shadow: 0 4px 10px rgba(255, 123, 156, 0.15);
+  }
+
+  .nav-button {
+    font-family: 'Fredoka', 'Comfortaa', sans-serif;
+    font-size: 14px;
+    color: #d6336c;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nav-button:hover {
+    background: #fff5f7;
+    color: #ff5c8a;
+  }
+
+  .nav-button.active {
+    background: #ff5c8a;
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(255, 92, 138, 0.3);
   }
 
   .toolbar {
@@ -77,7 +78,7 @@
     border: none;
     border-radius: 12px;
     padding: 10px 16px;
-    font-family: 'Fredoka', cursive;
+    font-family: 'Fredoka', 'Comfortaa', sans-serif;
     font-size: 13px;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(255, 92, 138, 0.3);
@@ -113,14 +114,14 @@
   }
 
   .header-title {
-    font-family: 'Fredoka', cursive;
+    font-family: 'Fredoka', 'Comfortaa', sans-serif;
     font-size: 28px;
     letter-spacing: 1.5px;
     text-shadow: 2px 2px 0px #d6336c;
   }
 
   .header-subtitle {
-    font-family: 'Comfortaa', cursive;
+    font-family: 'Comfortaa', sans-serif;
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
@@ -132,7 +133,7 @@
     background: transparent;
     border: none;
     outline: none;
-    font-family: 'Mali', cursive;
+    font-family: 'Mali', 'Comfortaa', sans-serif;
     font-weight: 600;
     color: #5a3e47;
     width: 100%;
@@ -156,7 +157,7 @@
   }
 
   .field-label {
-    font-family: 'Comfortaa', cursive;
+    font-family: 'Comfortaa', sans-serif;
     font-size: 11px;
     font-weight: 700;
     color: #d6336c;
@@ -179,7 +180,6 @@
     font-size: 12px;
   }
 
-  /* TABLA FORMATO CALENDARIO GUÍA */
   .table-container {
     width: 100%;
     overflow-x: auto;
@@ -198,7 +198,7 @@
   .schedule-table th {
     background: #ff5c8a;
     color: white;
-    font-family: 'Fredoka', cursive;
+    font-family: 'Fredoka', 'Comfortaa', sans-serif;
     font-size: 13px;
     padding: 10px 6px;
     text-align: center;
@@ -219,7 +219,7 @@
 
   .schedule-table td.time-col {
     background: #fff5f7;
-    font-family: 'Comfortaa', cursive;
+    font-family: 'Comfortaa', sans-serif;
     font-size: 11px;
     font-weight: 700;
     color: #d6336c;
@@ -244,19 +244,13 @@
     line-height: 14px;
   }
 
-  .weekend-header {
-    background: #ff7b9c !important;
-  }
+  .weekend-header { background: #ff7b9c !important; }
+  .weekend-cell { background: #fff8f9; }
 
-  .weekend-cell {
-    background: #fff8f9;
-  }
-
-  /* SECCIÓN NOTAS / OBSERVACIONES */
   .section-title {
     background: #ff5c8a;
     color: white;
-    font-family: 'Fredoka', cursive;
+    font-family: 'Fredoka', 'Comfortaa', sans-serif;
     font-size: 14px;
     padding: 6px 14px;
     border-radius: 20px;
@@ -278,7 +272,7 @@
       #ffa6b9 23px
     );
     line-height: 23px;
-    font-family: 'Mali', cursive;
+    font-family: 'Mali', 'Comfortaa', sans-serif;
     font-size: 12px;
     color: #5a3e47;
     min-height: 115px;
@@ -287,13 +281,14 @@
   @media (max-width: 800px) {
     body { padding: 8px; }
     .sheet { padding: 12px; }
+    .nav-bar { flex-wrap: wrap; }
     .week-info { grid-template-columns: 1fr; }
     .toolbar { flex-direction: column; }
     .btn { width: 100%; }
   }
 
   @media print {
-    .no-print { display: none !important; }
+    .no-print, .nav-bar { display: none !important; }
     .sheet { border: none !important; box-shadow: none !important; width: 100% !important; padding: 0 !important; }
     .table-container { overflow: visible !important; }
   }
@@ -301,214 +296,183 @@
 </head>
 <body>
 
-<div class="toolbar no-print">
-  <button class="btn btn-danger" onclick="clearSchedule()">🧹 Limpiar Calendario</button>
-  <button class="btn" onclick="window.print()">🖨️ Imprimir / Guardar en PDF</button>
-</div>
+  <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
+  <nav class="nav-bar no-print">
+    <a href="index.html" class="nav-button">👤 Hoja de Personaje</a>
+    <a href="calendario.html" class="nav-button active">📅 Calendario Semanal</a>
+  </nav>
 
-<div class="sheet">
-  <div class="header-box">
-    <div class="header-title">📅 WEEKLY SCHEDULE / CALENDARIO DE ESCENAS 📅</div>
-    <div class="header-subtitle">Ai no Ketto - Planificador Semanal</div>
+  <div class="toolbar no-print">
+    <button class="btn btn-danger" onclick="clearSchedule()">🧹 Limpiar Calendario</button>
+    <button class="btn" onclick="window.print()">🖨️ Imprimir / Guardar en PDF</button>
   </div>
 
-  <div class="week-info">
-    <div class="field-card">
-      <span class="field-label">🌸 Mes / Semana</span>
-      <input type="text" class="field-input" placeholder="Ej: Mayo - Semana 2">
+  <div class="sheet">
+    <div class="header-box">
+      <div class="header-title">📅 WEEKLY SCHEDULE / CALENDARIO DE ESCENAS 📅</div>
+      <div class="header-subtitle">Ai no Ketto - Planificador Semanal</div>
     </div>
-    <div class="field-card">
-      <span class="field-label">
-        🎯 Objetivo Semanal
-        <small>(Revitalizante, curas toda tu vitalidad y compostura)</small>
-      </span>
-      <input type="text" class="field-input" placeholder="Ej: Lograr la cita del viernes">
+
+    <div class="week-info">
+      <div class="field-card">
+        <span class="field-label">🌸 Mes / Semana</span>
+        <input type="text" class="field-input" placeholder="Ej: Mayo - Semana 2">
+      </div>
+      <div class="field-card">
+        <span class="field-label">
+          🎯 Objetivo Semanal
+          <small>(Revitalizante, curas toda tu vitalidad y compostura)</small>
+        </span>
+        <input type="text" class="field-input" placeholder="Ej: Lograr la cita del viernes">
+      </div>
+      <div class="field-card">
+        <span class="field-label">
+          👑 Rival Activo / Amenaza
+          <small>(+1 dado a tus acciones contra esa persona / +1 dado defendiéndote de sus acciones)</small>
+        </span>
+        <input type="text" class="field-input" placeholder="Ej: Rumores del Consejo">
+      </div>
     </div>
-    <div class="field-card">
-      <span class="field-label">
-        👑 Rival Activo / Amenaza
-        <small>(+1 dado a tus acciones contra esa persona / +1 dado defendiéndote de sus acciones)</small>
-      </span>
-      <input type="text" class="field-input" placeholder="Ej: Rumores del Consejo">
+
+    <div class="table-container">
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th>Horario / Escena</th>
+            <th>Lunes</th>
+            <th>Martes</th>
+            <th>Miércoles</th>
+            <th>Jueves</th>
+            <th>Viernes</th>
+            <th class="weekend-header">Sábado</th>
+            <th class="weekend-header">Domingo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 1. MADRUGADA -->
+          <tr>
+            <td class="time-col">Madrugada <span class="time-tag">(04:00 - 06:30)</span></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td rowspan="3" class="weekend-cell">
+              <div style="font-size:10px; font-weight:bold; color:#d6336c; margin-bottom:2px;">☀️ MAÑANA</div>
+              <textarea class="cell-input" style="height: calc(100% - 16px);" placeholder="Acción de la mañana..."></textarea>
+            </td>
+            <td rowspan="3" class="weekend-cell">
+              <div style="font-size:10px; font-weight:bold; color:#d6336c; margin-bottom:2px;">☀️ MAÑANA</div>
+              <textarea class="cell-input" style="height: calc(100% - 16px);" placeholder="Acción de la mañana..."></textarea>
+            </td>
+          </tr>
+
+          <!-- 2. AMANECER -->
+          <tr>
+            <td class="time-col">Amanecer <span class="time-tag">(07:00 - 08:30)</span></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+          </tr>
+
+          <!-- 3. MAÑANA -->
+          <tr>
+            <td class="time-col">Mañana <span class="time-tag">(08:30 - 12:30)</span></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+          </tr>
+
+          <!-- 4. ALMUERZO -->
+          <tr>
+            <td class="time-col">Almuerzo <span class="time-tag">(12:30 - 13:30)</span></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td rowspan="2" class="weekend-cell">
+              <div style="font-size:10px; font-weight:bold; color:#d6336c; margin-bottom:2px;">🌤️ TARDE</div>
+              <textarea class="cell-input" style="height: calc(100% - 16px);" placeholder="Acción de la tarde..."></textarea>
+            </td>
+            <td rowspan="2" class="weekend-cell">
+              <div style="font-size:10px; font-weight:bold; color:#d6336c; margin-bottom:2px;">🌤️ TARDE</div>
+              <textarea class="cell-input" style="height: calc(100% - 16px);" placeholder="Acción de la tarde..."></textarea>
+            </td>
+          </tr>
+
+          <!-- 5. ATARDECER -->
+          <tr>
+            <td class="time-col">Atardecer <span class="time-tag">(15:30 - 18:30)</span></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+          </tr>
+
+          <!-- 6. NOCHE -->
+          <tr>
+            <td class="time-col">Noche <span class="time-tag">(19:00 - 22:30)</span></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td rowspan="2" class="weekend-cell">
+              <div style="font-size:10px; font-weight:bold; color:#d6336c; margin-bottom:2px;">🌙 NOCHE</div>
+              <textarea class="cell-input" style="height: calc(100% - 16px);" placeholder="Acción de la noche..."></textarea>
+            </td>
+            <td rowspan="2" class="weekend-cell">
+              <div style="font-size:10px; font-weight:bold; color:#d6336c; margin-bottom:2px;">🌙 NOCHE</div>
+              <textarea class="cell-input" style="height: calc(100% - 16px);" placeholder="Acción de la noche..."></textarea>
+            </td>
+          </tr>
+
+          <!-- 7. MEDIANOCHE -->
+          <tr>
+            <td class="time-col">Medianoche <span class="time-tag">(23:00 - 02:00)</span></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+            <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-title">📝 Notes / Eventos Especiales</div>
+    <div class="field-card" style="background: #ffffff; padding: 6px 12px;">
+      <textarea class="notes-area" placeholder="Anota aquí eventos clave, rumores escuchados o consecuencias para la siguiente semana..."></textarea>
     </div>
   </div>
-
-  <!-- TABLA DE HORARIOS ESTILO TIMETABLE -->
-  <div class="table-container">
-    <table class="schedule-table">
-      <thead>
-        <tr>
-          <th>Horario / Escena</th>
-          <th>Lunes</th>
-          <th>Martes</th>
-          <th>Miércoles</th>
-          <th>Jueves</th>
-          <th>Viernes</th>
-          <th class="weekend-header">Sábado</th>
-          <th class="weekend-header">Domingo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- 1. MADRUGADA -->
-        <tr>
-          <td class="time-col">
-            Madrugada
-            <span class="time-tag">(04:00 - 06:30)</span>
-          </td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <!-- Sábado Mañana (Abarca Madrugada, Amanecer y Mañana) -->
-          <td rowspan="3" class="weekend-cell">
-            <div style="font-size:10px; font-weight:bold; color:#d6336c; margin-bottom:2px;">☀️ MAÑANA</div>
-            <textarea class="cell-input" style="height: calc(100% - 16px);" placeholder="Acción de la mañana..."></textarea>
-          </td>
-          <!-- Domingo Mañana (Abarca Madrugada, Amanecer y Mañana) -->
-          <td rowspan="3" class="weekend-cell">
-            <div style="font-size:10px; font-weight:bold; color:#d6336c; margin-bottom:2px;">☀️ MAÑANA</div>
-            <textarea class="cell-input" style="height: calc(100% - 16px);" placeholder="Acción de la mañana..."></textarea>
-          </td>
-        </tr>
-
-        <!-- 2. AMANECER -->
-        <tr>
-          <td class="time-col">
-            Amanecer
-            <span class="time-tag">(07:00 - 08:30)</span>
-          </td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-        </tr>
-
-        <!-- 3. MAÑANA -->
-        <tr>
-          <td class="time-col">
-            Mañana
-            <span class="time-tag">(08:30 - 12:30)</span>
-          </td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-        </tr>
-
-        <!-- 4. ALMUERZO -->
-        <tr>
-          <td class="time-col">
-            Almuerzo
-            <span class="time-tag">(12:30 - 13:30)</span>
-          </td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <!-- Sábado Tarde (Abarca Almuerzo y Atardecer) -->
-          <td rowspan="2" class="weekend-cell">
-            <div style="font-size:10px; font-weight:bold; color:#d6336c; margin-bottom:2px;">🌤️ TARDE</div>
-            <textarea class="cell-input" style="height: calc(100% - 16px);" placeholder="Acción de la tarde..."></textarea>
-          </td>
-          <!-- Domingo Tarde (Abarca Almuerzo y Atardecer) -->
-          <td rowspan="2" class="weekend-cell">
-            <div style="font-size:10px; font-weight:bold; color:#d6336c; margin-bottom:2px;">🌤️ TARDE</div>
-            <textarea class="cell-input" style="height: calc(100% - 16px);" placeholder="Acción de la tarde..."></textarea>
-          </td>
-        </tr>
-
-        <!-- 5. ATARDECER -->
-        <tr>
-          <td class="time-col">
-            Atardecer
-            <span class="time-tag">(15:30 - 18:30)</span>
-          </td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-        </tr>
-
-        <!-- 6. NOCHE -->
-        <tr>
-          <td class="time-col">
-            Noche
-            <span class="time-tag">(19:00 - 22:30)</span>
-          </td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <!-- Sábado Noche (Abarca Noche y Medianoche) -->
-          <td rowspan="2" class="weekend-cell">
-            <div style="font-size:10px; font-weight:bold; color:#d6336c; margin-bottom:2px;">🌙 NOCHE</div>
-            <textarea class="cell-input" style="height: calc(100% - 16px);" placeholder="Acción de la noche..."></textarea>
-          </td>
-          <!-- Domingo Noche (Abarca Noche y Medianoche) -->
-          <td rowspan="2" class="weekend-cell">
-            <div style="font-size:10px; font-weight:bold; color:#d6336c; margin-bottom:2px;">🌙 NOCHE</div>
-            <textarea class="cell-input" style="height: calc(100% - 16px);" placeholder="Acción de la noche..."></textarea>
-          </td>
-        </tr>
-
-        <!-- 7. MEDIANOCHE -->
-        <tr>
-          <td class="time-col">
-            Medianoche
-            <span class="time-tag">(23:00 - 02:00)</span>
-          </td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-          <td><textarea class="cell-input" placeholder="Acción..."></textarea></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- NOTAS Y OBSERVACIONES -->
-  <div class="section-title">📝 Notes / Eventos Especiales</div>
-  <div class="field-card" style="background: #ffffff; padding: 6px 12px;">
-    <textarea class="notes-area" placeholder="Anota aquí eventos clave, rumores escuchados o consecuencias para la siguiente semana..."></textarea>
-  </div>
-</div>
 
 <script>
   const STORAGE_KEY = 'ai_no_ketto_timetable_schedule';
 
   function saveScheduleData() {
-    const data = {
-      inputs: [],
-      textareas: []
-    };
-
+    const data = { inputs: [], textareas: [] };
     document.querySelectorAll('.sheet input').forEach(input => data.inputs.push(input.value));
     document.querySelectorAll('.sheet textarea').forEach(txt => data.textareas.push(txt.value));
-
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   }
 
   function loadScheduleData() {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (!saved) return;
-
     try {
       const data = JSON.parse(saved);
-
       const inputs = document.querySelectorAll('.sheet input');
       if (data.inputs) {
         inputs.forEach((input, index) => {
           if (data.inputs[index] !== undefined) input.value = data.inputs[index];
         });
       }
-
       const textareas = document.querySelectorAll('.sheet textarea');
       if (data.textareas) {
         textareas.forEach((txt, index) => {
@@ -533,12 +497,5 @@
   });
 </script>
 
-<body>
-  <!-- BARRA DE NAVEGACIÓN -->
-  <nav class="nav-bar no-print">
-    <a href="index.html" class="nav-button">👤 Hoja de Personaje</a>
-    <a href="calendario.html" class="nav-button active">📅 Calendario Semanal</a>
-  </nav>
-
-  <!-- AQUÍ EMPIEZA EL CONTENIDO DEL CALENDARIO -->
+</body>
 </html>
