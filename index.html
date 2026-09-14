@@ -130,6 +130,43 @@
   .banner-fail { background: #f8d7da; color: #721c24; border: 2px solid #dc3545; margin-top: 5px; font-size: 14px;}
 
   @media print { .no-print { display: none !important; } .sheet { border: 2px solid #ff7b9c !important; box-shadow: none !important; padding: 10px !important; } }
+ /* --- ADAPTACIÓN PARA DISPOSITIVOS MÓVILES --- */
+  @media (max-width: 800px) {
+    body { padding: 8px; }
+    .sheet { padding: 12px; }
+    
+    .nav-bar, .toolbar { 
+      flex-wrap: wrap; 
+      justify-content: center; 
+    }
+    
+    .btn { 
+      width: 100%; 
+      margin-bottom: 5px; 
+    }
+    
+    .info-grid, .grid-4, .grid-3 { 
+      grid-template-columns: 1fr; 
+      gap: 12px; 
+    }
+    
+    .attr-card, .status-card { 
+      margin-bottom: 5px; 
+    }
+    
+    .spec-table-container { 
+      overflow-x: auto; 
+      width: 100%; 
+      display: block; 
+      border-radius: 14px;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .spec-table { 
+      min-width: 600px; 
+      margin-top: 0; 
+    }
+  }
 </style>
 </head>
 <body>
